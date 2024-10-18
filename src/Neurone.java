@@ -1,10 +1,6 @@
 import java.util.ArrayList;
 
 public class Neurone {
-    //entrées
-    Float e1;
-    Float e2;
-    Float e3;
     //poids
     ArrayList<Float> weights;
     // sortie
@@ -13,9 +9,8 @@ public class Neurone {
     public Neurone(int n) {
         weights = new ArrayList<>(n);
         for (int i = 0; i < n; i++) {
-            weights.add((float) Math.random());
+            weights.add((float) Math.random()); // Poids aléatoires entre 0 et 1
         }
-    }
 
     @Override
     public String toString() {
@@ -35,10 +30,11 @@ public class Neurone {
         }
         Float sum = 0.0f;
         for (int i = 0; i < inputs.size(); i++) {
-            sum += inputs.get(i) * weights.get(i);
+            sum += inputs.get(i) * weights.get(i);  // Somme pondérée
         }
         return sum;
     }
+
 
     public int activation(Float x) {
         return x > 0.5 ? 1 : 0;

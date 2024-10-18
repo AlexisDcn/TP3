@@ -45,6 +45,9 @@ public class Neurone {
         return x > 0.5 ? 1 : 0;
     }
 
-    
+    public Float calculerSortie(Float[] inputs) {
+        s = somme(inputs);
+        return s;
+    }
     
 }

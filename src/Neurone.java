@@ -41,6 +41,10 @@ public class Neurone {
         return sum;
     }
 
+    public int activation(Float x) {
+        return x > 0.5 ? 1 : 0;
+    }
+
     
     
 }

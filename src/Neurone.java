@@ -11,6 +11,7 @@ public class Neurone {
         for (int i = 0; i < n; i++) {
             weights.add((float) Math.random()); // Poids aléatoires entre 0 et 1
         }
+    }
 
     @Override
     public String toString() {
@@ -40,8 +41,8 @@ public class Neurone {
         return x > 0.5 ? 1 : 0;
     }
 
-    public Float calculerSortie(ArrayList<Float> inputs) {
-        s = somme(inputs);
-        return s;
+    public int calculerSortie(ArrayList<Float> inputs) {
+        s = somme(inputs);  // Calcul de la somme pondérée
+        return activation(s);  // Appliquer l'activation pour obtenir 1 ou 0
     }
 }

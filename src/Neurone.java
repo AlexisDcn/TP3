@@ -6,37 +6,36 @@ public class Neurone {
     Float e2;
     Float e3;
     //poids
-    Float[] weights;
+    ArrayList<Float> weights;
     // sortie
     Float s; 
 
     public Neurone(int n) {
-        weights = new Float[n];
+        weights = new ArrayList<>(n);
         for (int i = 0; i < n; i++) {
-            weights[i] = (float) Math.random();
+            weights.add((float) Math.random());
         }
     }
 
-    
     @Override
     public String toString() {
         String result = "neurone de poids ";
-        for (int i = 0; i < weights.length; i++) {
-            result += weights[i];
-            if (i < weights.length - 1) {
+        for (int i = 0; i < weights.size(); i++) {
+            result += weights.get(i);
+            if (i < weights.size() - 1) {
                 result += " | ";
             }
         }
         return result;
     }
 
-    public Float somme(Float[] inputs) {
-        // if (inputs.length != weights.length) {
-        //     throw new IllegalArgumentException("Le nombre d'entrées doit être égal au nombre de poids.");
-        // }
+    public Float somme(ArrayList<Float> inputs) {
+        if (inputs.size() != weights.size()) {
+            throw new IllegalArgumentException("Le nombre d'entrées doit être égal au nombre de poids.");
+        }
         Float sum = 0.0f;
-        for (int i = 0; i < inputs.length; i++) {
-            sum += inputs[i] * weights[i];
+        for (int i = 0; i < inputs.size(); i++) {
+            sum += inputs.get(i) * weights.get(i);
         }
         return sum;
     }
@@ -45,9 +44,8 @@ public class Neurone {
         return x > 0.5 ? 1 : 0;
     }
 
-    public Float calculerSortie(Float[] inputs) {
+    public Float calculerSortie(ArrayList<Float> inputs) {
         s = somme(inputs);
         return s;
     }
-    
 }
